@@ -12,7 +12,6 @@
 
 #include "BRIEF.h"
 #include "DUtils.h"
-#include <boost/dynamic_bitset.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <vector>
 
