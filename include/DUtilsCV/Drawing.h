@@ -179,19 +179,6 @@ public:
     void polyline(const std::vector<T> &x, const std::vector<T> &y,
       const Style &style = Style());
   
-  protected:
-  
-    /**
-     * Sets axis parameters
-     * @param minx min value of x axis
-     * @param maxx max value of x axis
-     * @param miny min value of y axis
-     * @param maxy max value of y axis
-     * @param margin width of blank area close to image borders
-     */
-    void setAxes(double minx, double maxx, double miny, double maxy, 
-      int margin);
-    
     /**
      * Converts a x coordinate into its pixel value
      * @param x axis coordinate
@@ -205,6 +192,19 @@ public:
      * @return v coordinate in pixels
      */
     inline int toPxY(double y) const;
+  
+  protected:
+  
+    /**
+     * Sets axis parameters
+     * @param minx min value of x axis
+     * @param maxx max value of x axis
+     * @param miny min value of y axis
+     * @param maxy max value of y axis
+     * @param margin width of blank area close to image borders
+     */
+    void setAxes(double minx, double maxx, double miny, double maxy, 
+      int margin);
   
   protected:
   
