@@ -36,6 +36,8 @@ public:
       cv::Scalar color;
       /// Thickness
       int thickness;
+      /// LineTypes as defined in OpenCV
+      cv::LineTypes lineType = cv::LINE_AA;
       
       /**
        * Style by default
@@ -63,14 +65,14 @@ public:
        * @param c char-coded color: those supported by matlab (bgrcmykw)
        * @param _thickness
        */
-      Style(char c, int _thickness = 1);
+      Style(char c, int _thickness = 1, cv::LineTypes lineType = cv::LINE_8);
       
       /**
        * Style with a char-coded color
        * @param _thickness
        * @param c char-coded color: those supported by matlab (bgrcmykw)
        */
-      Style(int _thickness, char c);
+      Style(int _thickness, char c, cv::LineTypes lineType = cv::LINE_8);
     };
     
   public:
@@ -178,7 +180,7 @@ public:
     template<class T>
     void polyline(const std::vector<T> &x, const std::vector<T> &y,
       const Style &style = Style());
-  
+
     /**
      * Converts a x coordinate into its pixel value
      * @param x axis coordinate

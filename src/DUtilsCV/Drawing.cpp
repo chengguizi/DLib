@@ -254,10 +254,10 @@ void Drawing::drawBox(cv::Mat &image, const cv::Mat &cRo,
   
   cv::projectPoints(oBox, cRo, cto, A, k, box);
 
-	cv::line(image, box[0], box[1], style.color, style.thickness);
-	cv::line(image, box[1], box[2], style.color, style.thickness);
-	cv::line(image, box[2], box[3], style.color, style.thickness);
-	cv::line(image, box[3], box[0], style.color, style.thickness);
+	cv::line(image, box[0], box[1], style.color, style.thickness, style.lineType);
+	cv::line(image, box[1], box[2], style.color, style.thickness, style.lineType);
+	cv::line(image, box[2], box[3], style.color, style.thickness, style.lineType);
+	cv::line(image, box[3], box[0], style.color, style.thickness, style.lineType);
 }
 
 // ---------------------------------------------------------------------------
@@ -299,16 +299,16 @@ void Drawing::drawBox(cv::Mat &image, const cv::Mat &sHb, int cols, int rows,
     }
   }
 
-  cv::line(image, box[0], box[1], style.color, style.thickness);
-	cv::line(image, box[1], box[2], style.color, style.thickness);
-	cv::line(image, box[2], box[3], style.color, style.thickness);
-	cv::line(image, box[3], box[0], style.color, style.thickness);
+  cv::line(image, box[0], box[1], style.color, style.thickness, style.lineType);
+	cv::line(image, box[1], box[2], style.color, style.thickness, style.lineType);
+	cv::line(image, box[2], box[3], style.color, style.thickness, style.lineType);
+	cv::line(image, box[3], box[0], style.color, style.thickness, style.lineType);
 
 }
 
 // ---------------------------------------------------------------------------
 
-Drawing::Plot::Style::Style(char c, int _thickness)
+Drawing::Plot::Style::Style(char c, int _thickness, cv::LineTypes lineType)
 {
   int r, g, b;
   r = g = b = 0;
@@ -328,13 +328,15 @@ Drawing::Plot::Style::Style(char c, int _thickness)
   }
   
   color = cv::Scalar(b, g, r);
+
+  this->lineType = lineType;
 }
 
 // ---------------------------------------------------------------------------
 
-Drawing::Plot::Style::Style(int _thickness, char c)
+Drawing::Plot::Style::Style(int _thickness, char c, cv::LineTypes lineType)
 {  
-  Drawing::Plot::Style(c, _thickness);
+  Drawing::Plot::Style(c, _thickness, lineType);
 }
 
 // ---------------------------------------------------------------------------
@@ -417,7 +419,7 @@ void Drawing::Plot::line(double x1, double y1, double x2, double y2,
   cv::Point a(toPxX(x1), toPxY(y1));
   cv::Point b(toPxX(x2), toPxY(y2));
     
-  cv::line(m_canvas, a, b, style.color, style.thickness);
+  cv::line(m_canvas, a, b, style.color, style.thickness, style.lineType);
 }
 
 // ---------------------------------------------------------------------------
