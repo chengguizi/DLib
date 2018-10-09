@@ -32,7 +32,7 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/features2d/features2d.hpp>
 #include <vector>
-#include <boost/dynamic_bitset.hpp>
+#include <bitset>
 
 namespace DVision {
 
@@ -42,7 +42,8 @@ class BRIEF
 public:
 
   /// Bitset type
-  typedef boost::dynamic_bitset<> bitset;
+  static const int L = 256;
+  typedef std::bitset<L> bitset;
 
   /// Type of pairs
   enum Type
@@ -151,7 +152,7 @@ public:
     m_y1 = y1;
     m_x2 = x2;
     m_y2 = y2;
-    m_bit_length = x1.size();
+    assert (m_bit_length == (int)x1.size());
   }
   
   /**
@@ -176,7 +177,7 @@ protected:
 protected:
 
   /// Descriptor length in bits
-  int m_bit_length;
+  const int m_bit_length;
 
   /// Patch size
   int m_patch_size;

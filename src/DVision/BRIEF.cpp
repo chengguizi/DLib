@@ -24,6 +24,7 @@ using namespace DVision;
 BRIEF::BRIEF(int nbits, int patch_size, Type type):
   m_bit_length(nbits), m_patch_size(patch_size), m_type(type)
 {
+  assert(m_bit_length == L);
   assert(patch_size > 1);
   assert(nbits > 0);
 
@@ -84,7 +85,6 @@ void BRIEF::compute(const cv::Mat &image,
   dit = descriptors.begin();
   for(kit = points.begin(); kit != points.end(); ++kit, ++dit)
   {
-    dit->resize(m_bit_length);
     dit->reset();
 
     for(unsigned int i = 0; i < m_x1.size(); ++i)
