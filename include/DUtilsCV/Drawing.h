@@ -49,16 +49,16 @@ public:
        * @param _color 
        * @param _thickness
        */
-      Style(const cv::Scalar &_color, int _thickness = 1)
-        : color(_color), thickness(_thickness){}
+      Style(const cv::Scalar &_color, int _thickness = 1, cv::LineTypes lineType = cv::LINE_8)
+        : color(_color), thickness(_thickness), lineType(lineType){}
       
       /**
        * Style with color and thickness
        * @param _thickness
        * @param _color 
        */
-      Style(int _thickness, const cv::Scalar &_color = cv::Scalar(0,0,0) )
-        : color(_color), thickness(_thickness){}
+      Style(int _thickness, const cv::Scalar &_color = cv::Scalar(0,0,0), cv::LineTypes lineType = cv::LINE_8)
+        : color(_color), thickness(_thickness), lineType(lineType){}
       
       /**
        * Style with a char-coded color
