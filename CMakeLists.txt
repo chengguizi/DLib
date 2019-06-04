@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 2.6)
 project(DLib)
 
 option(BUILD_DUtils   "Build DUtils (basic c++ functions)." ON)
-option(BUILD_DUtilsCV "Build DUtilsCV (OpenCV functions, requires DUtils)." ON)
-option(BUILD_DVision  "Build DVision (computer vision functions, requires DUtilsCV)." ON)
+option(BUILD_DUtilsCV "Build DUtilsCV (OpenCV functions, requires DUtils)." OFF)
+option(BUILD_DVision  "Build DVision (computer vision functions, requires DUtilsCV)." OFF)
 
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
